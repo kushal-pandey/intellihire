@@ -74,8 +74,7 @@ async def apply_for_job(
     db.commit()
     db.refresh(application)
 
-    # Trigger async email — non-blocking
-    send_application_confirmation.delay(current_user.email, job.title, ats_score)
+    send_application_confirmation(current_user.email, job.title, ats_score)
 
     return application
 
@@ -147,6 +146,6 @@ def update_application_status(
     candidate = db.query(User).filter(User.id == application.candidate_id).first()
     job = db.query(Job).filter(Job.id == application.job_id).first()
     if candidate and job:
-        send_status_update.delay(candidate.email, job.title, update_data.status)
+        send_status_update(candidate.email, job.title, update_data.status)
 
     return application
