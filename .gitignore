@@ -1,0 +1,10 @@
+# Sensitive Environment files
+.env
+.env.local
+.env.*.local
+
+# Docker & Python junk
+__pycache__/
+*.pyc
+venv/
+.DS_Store
