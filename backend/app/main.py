@@ -7,8 +7,6 @@ from app.database import engine, Base
 from app.utils.rate_limiter import limiter
 from app.routers import auth, jobs, applications, analytics
 
-# Create all database tables on startup (Alembic handles this in production)
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="IntelliHire API",

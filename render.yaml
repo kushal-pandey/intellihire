@@ -11,10 +11,7 @@ services:
       - key: DATABASE_URL
         sync: false
       - key: REDIS_URL
-        fromService:
-          type: redis
-          name: intellihire-redis
-          property: connectionString
+        sync: false
       - key: SECRET_KEY
         generateValue: true
       - key: ALGORITHM
@@ -51,15 +48,6 @@ services:
       - key: DATABASE_URL
         sync: false
       - key: REDIS_URL
-        fromService:
-          type: redis
-          name: intellihire-redis
-          property: connectionString
+        sync: false
       - key: SECRET_KEY
         sync: false
-
-  - type: redis
-    name: intellihire-redis
-    plan: free
-    ipAllowList: []
-    maxmemoryPolicy: noeviction
